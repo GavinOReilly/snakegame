@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnakeGame</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <button id="startButton">Start</button>
+  <div>Score: <span id="scoreDisplay">0</span></div>
+  <div>HighScore: <span id="highScoreDisplay">0</span></div>
+  <div id="message"></div>
+  <div id="grid">
+  </div>
+
+  <table>
+    <tr>
+      <td></td>
+      <td> <button onclick="onButtonClick(MOVE_UP)">&uArr;</button>
+  </td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>
+        <button onclick="onButtonClick(MOVE_LEFT)" >&lArr;</button>
+      </td>
+      <td></td>
+      <td><button onclick="onButtonClick(MOVE_RIGHT)" >&rArr;</button></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td> <button onclick="onButtonClick(MOVE_DOWN)" >&dArr;</button></td>
+      <td></td>
+    </tr>
+
+  </table>
+
+
+
+
+
+
+
+  <script src="app.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzBGTcjn_qpDaGfxTOmsbAtxDt9ysK1vE",
+      authDomain: "os-demo-2022.firebaseapp.com",
+      projectId: "os-demo-2022",
+      storageBucket: "os-demo-2022.appspot.com",
+      messagingSenderId: "274567704324",
+      appId: "1:274567704324:web:6a9b0586d9ae63f6876a51"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+
+</body>
+
+</html>
