@@ -13,6 +13,7 @@ const MOVE_RIGHT = 1;
 const MOVE_LEFT = -1;
 const MOVE_UP = -20;
 const MOVE_DOWN = 20;
+const API_URL = "http://localhost:3000/snake/score";
 
 let gridSquares = [];
 
@@ -26,18 +27,36 @@ let snakePos;
 let currentDirection = MOVE_RIGHT;
 let tickInterval;
 let score = 0;
-let highScore = 0;
-let highScoreString = localStorage.getItem("snakeHighScore");
-if (highScoreString) {
-    highScore = parseInt(highScoreString)
-    highScoreDisplay.innerText = highScore;
-};
+
 let gameSpeed = 450;
 
 function endGame (msg) {
     message.innerText = msg;
     clearInterval(tickInterval);
 }
+
+async function getHighScore(){ 
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    return data.highScore;
+};
+
+async function saveHighScore(newScore){
+    await fetch(API_URL,{
+        method:"POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            highScore: newScore
+        })
+    });
+};
+
+let highScore;
+getHighScore().then(result => {highScore = result
+highScoreDisplay.innerText = highScore;
+});
 
 function moveSnake() {
 
@@ -52,7 +71,7 @@ function moveSnake() {
         if (score > highScore) {
             highScore = score; 
             highScoreDisplay.innerText = highScore;
-            localStorage.setItem("snakeHighScore", highScore);
+            saveHighScore(highScore);
         }
         gridSquares[newHead].classList.remove('apple');
         placeApple();
