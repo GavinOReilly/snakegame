@@ -1,10 +1,12 @@
 table button {
     height: 100px;
     width: 100%;
+    font-size: 70px;
 };
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 #grid {
@@ -23,7 +25,7 @@ body {
 }
 
 .snake{
-    background-color:rgb(40, 68, 40);
+    background-color:rgb(36, 193, 36);
 
 }
 
